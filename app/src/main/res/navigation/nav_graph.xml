@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/logInfoFragment">
+
+    <fragment
+        android:id="@+id/learningFragment"
+        android:name="com.example.besafeapp.ui.LearningFragment"
+        android:label="fragment_learning"
+        tools:layout="@layout/fragment_learning" />
+    <fragment
+        android:id="@+id/logInfoFragment"
+        android:name="com.example.besafeapp.ui.LogInfoFragment"
+        android:label="fragment_log_info"
+        tools:layout="@layout/fragment_log_info" >
+        <action
+            android:id="@+id/action_logInfoFragment_to_learningFragment"
+            app:destination="@id/learningFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/safetyListFragment"
+        android:name="com.example.besafeapp.ui.SafetyListFragment"
+        android:label="fragment_safety_list"
+        tools:layout="@layout/fragment_safety_list" />
+</navigation>
