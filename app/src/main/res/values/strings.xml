@@ -2,4 +2,8 @@
     <string name="app_name">BeSafeApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="learn_tab_text">Научи</string>
+    <string name="log_tab_text">Данни</string>
+    <string name="achievements_tab_text">Постижения</string>
+    <string name="achievements_button_text">Изчисли</string>
 </resources>
