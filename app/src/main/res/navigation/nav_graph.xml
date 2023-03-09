@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/learningFragment"
         android:name="com.example.besafeapp.ui.LearningFragment"
-        android:label="fragment_learning"
+        android:label="Научи как!"
         tools:layout="@layout/fragment_learning" />
     <fragment
         android:id="@+id/logInfoFragment"
         android:name="com.example.besafeapp.ui.LogInfoFragment"
-        android:label="fragment_log_info"
+        android:label="Статистика"
         tools:layout="@layout/fragment_log_info" >
         <action
             android:id="@+id/action_logInfoFragment_to_learningFragment"
@@ -22,6 +22,6 @@
     <fragment
         android:id="@+id/safetyListFragment"
         android:name="com.example.besafeapp.ui.SafetyListFragment"
-        android:label="fragment_safety_list"
+        android:label="Постижения"
         tools:layout="@layout/fragment_safety_list" />
 </navigation>

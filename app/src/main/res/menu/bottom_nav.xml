@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/learningFragment"
-        android:title="Learn"
+        android:title="Научи"
         android:icon="@drawable/learn_icon"/>
     <item
         android:id="@+id/logInfoFragment"
-        android:title="Log"
+        android:title="Данни"
         android:icon="@drawable/log_icon"/>
     <item
         android:id="@+id/safetyListFragment"
-        android:title="SL"
+        android:title="Постижения"
         android:icon="@drawable/safety_list_icon"/>
 </menu>
