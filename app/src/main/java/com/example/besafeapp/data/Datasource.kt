@@ -64,6 +64,8 @@ class Datasource{
     fun readFile(context: Context): JSONObject {
         val file = File(context.filesDir, FILE_NAME)
 
+        Log.d("TAG", file.absolutePath)
+
         val inputStream: InputStream = context.openFileInput(FILE_NAME)
         val reader = BufferedReader(InputStreamReader(inputStream))
         val stringBuilder = StringBuilder()
@@ -72,6 +74,7 @@ class Datasource{
             stringBuilder.append(line).append("\n")
             line = reader.readLine()
         }
+        Log.d("TAG", JSONObject(stringBuilder.toString()).toString())
         reader.close()
         return JSONObject(stringBuilder.toString())
     }

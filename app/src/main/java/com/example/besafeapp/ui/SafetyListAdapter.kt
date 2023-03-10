@@ -33,9 +33,13 @@ class SafetyListAdapter(data:List<SecurityTopic>, json: JSONObject, private val 
         val item = safety[position]
         holder.checkBox.text = item.topic
 
-        if (userCheck.getBoolean(item.id.toString())) {
-            holder.checkBox.isChecked = true
-            map[item.id.toString()] = true
+        if (userCheck.has(item.id.toString())) {
+            if (userCheck.getBoolean(item.id.toString())) {
+                holder.checkBox.isChecked = true
+                map[item.id.toString()] = true
+            } else {
+                map[item.id.toString()] = false
+            }
         }
         else{
             map[item.id.toString()] = false

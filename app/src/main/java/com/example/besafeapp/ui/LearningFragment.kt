@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.besafeapp.data.Datasource
 import com.example.besafeapp.databinding.FragmentLearningBinding
+import com.example.besafeapp.model.SecurityTopic
 
 
 class LearningFragment : Fragment() {
@@ -30,7 +31,20 @@ class LearningFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.learningListRV
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = LearningAdapter(Datasource().loadTopics())
+
+        val userCheck = Datasource().readFile(requireContext())
+        val data = Datasource().loadTopics()
+
+        var listTopics = arrayListOf<SecurityTopic>()
+
+        for (item in data) {
+            if (userCheck.has(item.id.toString())) {
+                if (!userCheck.getBoolean(item.id.toString())) {
+                    listTopics.add(item)
+                }
+            }
+        }
+        recyclerView.adapter = LearningAdapter(listTopics)
     }
 
     override fun onDestroyView() {

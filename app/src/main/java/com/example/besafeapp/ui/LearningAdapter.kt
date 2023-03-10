@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.besafeapp.R
 import com.example.besafeapp.model.SecurityTopic
+import org.json.JSONObject
 
 class LearningAdapter(data:List<SecurityTopic>) :
     RecyclerView.Adapter<LearningAdapter.LearningViewHolder>() {
@@ -34,7 +35,6 @@ class LearningAdapter(data:List<SecurityTopic>) :
 
         override fun onBindViewHolder(holder: LearningViewHolder, position: Int) {
             val item = safety[position]
-
             holder.topicName.text = item.topic
             holder.topicDescription.text = item.info
 
@@ -46,7 +46,6 @@ class LearningAdapter(data:List<SecurityTopic>) :
                     holder.expandableContentLayount.visibility = View.GONE
                     holder.seeMoreBtn.rotation = 0f
                 }
-
             }
         }
 }
