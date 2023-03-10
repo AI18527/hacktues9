@@ -6,4 +6,6 @@
     <string name="log_tab_text">Данни</string>
     <string name="achievements_tab_text">Постижения</string>
     <string name="achievements_button_text">Изчисли</string>
+    <string name="generate_button_text">Покажи</string>
+    <string name="generate_message_text">Можеш да видиш данните относно трафика на собствения си телефон в мрежата тук!</string>
 </resources>

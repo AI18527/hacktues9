@@ -10,4 +10,6 @@
 
     <color name="blue_dark">#397ECC</color>
     <color name="blue_primary">#4B96EC</color>
+    <color name="blue_tick">#3C69CB</color>
+
 </resources>

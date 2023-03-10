@@ -18,6 +18,8 @@
             android:id="@+id/safetyListRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,29 +34,30 @@
             android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/safetyListRV" />
+            app:layout_constraintTop_toBottomOf="@+id/safetyListRV"
+            app:layout_constraintBottom_toTopOf="@+id/calc_btn_id"/>
 
         <Button
             android:id="@+id/calc_btn_id"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/achievements_button_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.061"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="80dp"
+            app:layout_constraintEnd_toStartOf="@+id/safety_score_id"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/safetyListRV"
-            app:layout_constraintVertical_bias="0.106" />
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <TextView
             android:id="@+id/safety_score_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="19sp"
-            app:layout_constraintBottom_toBottomOf="@+id/calc_btn_id"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="50dp"
+            android:textSize="19dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/calc_btn_id"
-            app:layout_constraintTop_toTopOf="@+id/calc_btn_id" />
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
