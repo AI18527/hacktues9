@@ -99,14 +99,14 @@ public class MainActivity extends AppCompatActivity implements Observer {
         ByteBuffer trailer = ByteBuffer.wrap(Arrays.copyOfRange(frame, length - PICAPDROID_TRAIL_SIZE, frame.length));
         int magic = trailer.getInt();
         int process_id = trailer.getInt();
-        trailer = ByteBuffer.wrap(trailer.array(), 0, 20);
+        trailer = ByteBuffer.wrap(trailer.array(), 0, 28);
         String app_name = Charset.forName("ISO-8859-1").decode(trailer).toString();
-        app_name = app_name.substring(8, app_name.length());
+        app_name = app_name.substring(8);
 
         IpV4Packet packet = (IpV4Packet) pkt.getPayload();
         IpV4Packet.IpV4Header packet_header = packet.getHeader();
-        String dest = packet_header.getDstAddr().toString();
-        String src = packet_header.getSrcAddr().toString();
+        String dest = packet_header.getDstAddr().toString().substring(1);
+        String src = packet_header.getSrcAddr().toString().substring(1);
         String l4_protocol = packet_header.getProtocol().toString();
 
         int src_port = -1;
@@ -125,7 +125,16 @@ public class MainActivity extends AppCompatActivity implements Observer {
             dest_port = udp_header.getDstPort().valueAsInt();
             src_port = udp_header.getSrcPort().valueAsInt();
         }
-        mLog.append(String.format("[%s] %s (%d)\n(%d)%s -> (%d)%s\n\n\n", l4_protocol, app_name, process_id, src_port, src, dest_port, dest));
+        // check if we send the packet
+        // 10.215.173.1 is the ip in the vpn
+        if (src.contains("10.215.173.1")) {
+            mLog.append(String.format("(%s) %s [%d]\n(%d) You -> (%d) %s\n\n\n", l4_protocol, app_name, process_id, src_port, dest_port, dest));
+        } else if (dest.contains("10.215.173.1")){
+            dest = "You";
+            mLog.append(String.format("(%s) %s [%d]\n(%d) You <- (%d) %s\n\n\n", l4_protocol, app_name, process_id, dest_port, src_port, src));
+        } else {
+            mLog.append(String.format("(%s) %s [%d]\n(%d) %s -> (%d) %s\n\n\n", l4_protocol, app_name, process_id, src_port, src, dest_port, dest));
+        }
     }
 
     void queryCaptureStatus() {
