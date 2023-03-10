@@ -36,7 +36,7 @@ class LearningAdapter(data:List<SecurityTopic>) :
         override fun onBindViewHolder(holder: LearningViewHolder, position: Int) {
             val item = safety[position]
             holder.topicName.text = item.topic
-            holder.topicDescription.text = "Here must be written more detailed information about this topic."
+            holder.topicDescription.text = item.info
 
             holder.seeMoreBtn.setOnClickListener {
                 if (holder.expandableContentLayount.visibility == View.GONE) {

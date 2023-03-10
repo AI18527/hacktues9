@@ -8,11 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.besafeapp.R
 import com.example.besafeapp.data.Datasource
 import com.example.besafeapp.databinding.FragmentLearningBinding
-import com.example.besafeapp.databinding.FragmentSafetyListBinding
-import org.json.JSONObject
 
 
 class LearningFragment : Fragment() {

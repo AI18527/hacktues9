@@ -41,8 +41,6 @@ class SafetyListAdapter(data:List<SecurityTopic>, json: JSONObject, private val 
             map[item.id.toString()] = false
         }
 
-        Log.d("TAG", map.toString())
-
         holder.checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
             map[item.id.toString()] = isChecked
             listener.isChecked(map)
