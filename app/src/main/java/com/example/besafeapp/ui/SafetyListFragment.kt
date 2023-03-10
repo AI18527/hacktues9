@@ -1,6 +1,7 @@
 package com.example.besafeapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,12 @@ class SafetyListFragment : Fragment() {
         recyclerView = binding.safetyListRV
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = SafetyListAdapter()
+
+        binding.calcBtnId.setOnClickListener{
+            Log.d("TAG","Hello");
+        }
+
+        binding.safetyScoreId.text = "score"
     }
 
     override fun onDestroyView() {
