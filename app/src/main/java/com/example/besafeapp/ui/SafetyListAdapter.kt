@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
 import com.example.besafeapp.R
+import com.example.besafeapp.data.Datasource
 import com.example.besafeapp.model.SecurityTopic
 import org.json.JSONObject
 
@@ -33,18 +34,22 @@ class SafetyListAdapter(data:List<SecurityTopic>, json: JSONObject, private val 
         val item = safety[position]
         holder.checkBox.text = item.topic
 
-        if (userCheck.getBoolean(item.id.toString())) {
-            holder.checkBox.isChecked = true
-            map[item.id.toString()] = true
+        if (userCheck.has(item.id.toString())) {
+            if (userCheck.getBoolean(item.id.toString())) {
+                holder.checkBox.isChecked = true
+                map[item.id.toString()] = true
+            } else {
+                map[item.id.toString()] = false
+            }
         }
         else{
             map[item.id.toString()] = false
         }
 
-        holder.checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
-            map[item.id.toString()] = isChecked
-            listener.isChecked(map)
-        }
+            holder.checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
+                map[item.id.toString()] = isChecked
+                listener.isChecked(map)
+            }
     }
 
     companion object{

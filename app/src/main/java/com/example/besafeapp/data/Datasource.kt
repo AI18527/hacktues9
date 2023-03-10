@@ -1,6 +1,11 @@
 package com.example.besafeapp.data
 
+import android.content.Context
+import android.util.Log
+import com.example.besafeapp.data.Datasource.Companion.FILE_NAME
 import com.example.besafeapp.model.SecurityTopic
+import org.json.JSONObject
+import java.io.*
 
 class Datasource{
     fun loadTopics(): List<SecurityTopic> {
@@ -11,5 +16,31 @@ class Datasource{
             SecurityTopic(5, "Не отварям съмнителни линкове и не свалям съмнителни файлове", "Възможно е линковете привидно да приличат на официалните такива. Например може да се замене една буква от линк на верига магазини с подобно изглеждаща, за да може хората да клекнат върху него."),
             SecurityTopic(6, "Използвам VPN (Виртуална Частна Мрежа)", "")
         )
+    }
+
+    companion object{
+        const val FILE_NAME = "safetyCheck.txt"
+    }
+
+    fun readFile(context: Context): JSONObject {
+        val file = File(context.filesDir, FILE_NAME)
+
+        val inputStream: InputStream = context.openFileInput(FILE_NAME)
+        val reader = BufferedReader(InputStreamReader(inputStream))
+        val stringBuilder = StringBuilder()
+        var line: String? = reader.readLine()
+        while (line != null) {
+            stringBuilder.append(line).append("\n")
+            line = reader.readLine()
+        }
+        reader.close()
+        return JSONObject(stringBuilder.toString())
+    }
+
+    fun writeFile(string:String, context: Context){
+        Log.d("TAG", string)
+        context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE).use {
+            it.write(string.toByteArray())
+        }
     }
 }
