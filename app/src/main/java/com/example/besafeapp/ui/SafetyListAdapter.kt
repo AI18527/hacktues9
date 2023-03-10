@@ -6,15 +6,15 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
 import com.example.besafeapp.R
+import com.example.besafeapp.model.SecurityTopic
 
-class SafetyListAdapter() :
+class SafetyListAdapter(data:List<SecurityTopic>, private val listener:CheckboxListener) :
         RecyclerView.Adapter<SafetyListAdapter.SafetyListViewHolder>() {
 
-        private var safety: List<String> = arrayListOf("Hello", "Hi", "Hola")
+        private var safety: List<SecurityTopic> = data
 
         class SafetyListViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
             val checkBox = view.findViewById<CheckBox>(R.id.checkBox)!!
-
         }
 
         override fun getItemCount(): Int = safety.size
@@ -28,6 +28,9 @@ class SafetyListAdapter() :
 
         override fun onBindViewHolder(holder: SafetyListViewHolder, position: Int) {
             val item = safety[position]
-            holder.checkBox.text = item
+            holder.checkBox.text = item.topic
+            holder.checkBox.setOnCheckedChangeListener{buttonView, isChecked->
+                listener.isChecked(item.id, isChecked)
+            }
         }
     }
