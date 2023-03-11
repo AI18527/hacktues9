@@ -35,9 +35,10 @@ class SafetyListFragment : Fragment(), CheckboxListener {
         recyclerView.adapter = SafetyListAdapter(Datasource().loadTopics(), Datasource().readFile(requireContext()), this)
 
         binding.calcBtnId.setOnClickListener{
+            val values = SafetyListAdapter.map.values
+            sLevel = values.filter{v -> v}.size * 100/ values.size
+            binding.safetyScoreId.text = "$sLevel%"
         }
-
-        binding.safetyScoreId.text = "score"
     }
 
     override fun onDestroyView() {
@@ -48,6 +49,10 @@ class SafetyListFragment : Fragment(), CheckboxListener {
     override fun isChecked(map: Map<String, Boolean>){
         val json = JSONObject(map)
         Datasource().writeFile(json.toString(), requireContext())
+    }
+
+    companion object{
+        var sLevel = 0
     }
 }
 
