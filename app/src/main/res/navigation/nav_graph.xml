@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/logInfoFragment"
         android:name="com.example.besafeapp.ui.LogInfoFragment"
-        android:label="Статистика"
+        android:label="Трафик на данни"
         tools:layout="@layout/fragment_log_info" >
         <action
             android:id="@+id/action_logInfoFragment_to_learningFragment"
