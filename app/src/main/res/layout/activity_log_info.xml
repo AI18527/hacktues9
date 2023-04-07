@@ -25,6 +25,12 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+
+        <TextView
             android:text="Получени пакети:"
             android:textStyle="bold"
             android:textSize="20sp"

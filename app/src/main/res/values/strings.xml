@@ -8,4 +8,5 @@
     <string name="achievements_button_text">Изчисли</string>
     <string name="generate_button_text">Покажи</string>
     <string name="generate_message_text">Можеш да видиш данните относно трафика на собствения си телефон в мрежата тук!</string>
+    <string name="info">Знаеш ли, че дори в момента, някои приложения, които не използваш, изпращат и получават данни през мрежата?</string>
 </resources>

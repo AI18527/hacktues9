@@ -5,10 +5,17 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.TypedArrayUtils;
 
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.net.InetAddresses;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,9 +28,14 @@ import org.pcap4j.packet.IpV4Packet;
 import org.pcap4j.packet.TcpPacket;
 import org.pcap4j.packet.UdpPacket;
 
+import java.math.BigInteger;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -36,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements Observer {
     Button mStart;
     CaptureThread mCapThread;
     TextView mLog;
+    TextView mIP;
+    String ip;
     boolean mCaptureRunning = false;
 
     private final ActivityResultLauncher<Intent> captureStartLauncher =
@@ -45,11 +59,27 @@ public class MainActivity extends AppCompatActivity implements Observer {
     private final ActivityResultLauncher<Intent> captureStatusLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), this::handleCaptureStatusResult);
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_info);
+
+        mIP = findViewById(R.id.ip);
+
+        Context context = getApplicationContext();
+        WifiManager wm = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiInfo wifiInfo = wm.getConnectionInfo();
+        byte[] myIPAddress = BigInteger.valueOf(wifiInfo.getIpAddress()).toByteArray();
+        InetAddress myInetIP;
+        try {
+            myInetIP = InetAddress.getByAddress(myIPAddress);
+        } catch (UnknownHostException e) {
+            myInetIP = null;
+            e.printStackTrace();
+        }
+        assert myInetIP != null;
+        ip = myInetIP.getHostAddress();
+        mIP.append(String.format("Твоето IP: %s", ip));
 
         mLog = findViewById(R.id.pkts_log);
         mStart = findViewById(R.id.start_btn);

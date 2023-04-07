@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/logInfoFragment">
+    app:startDestination="@id/learningFragment">
 
     <fragment
         android:id="@+id/learningFragment"
@@ -15,9 +15,6 @@
         android:name="com.example.besafeapp.ui.LogInfoFragment"
         android:label="Трафик на данни"
         tools:layout="@layout/fragment_log_info" >
-        <action
-            android:id="@+id/action_logInfoFragment_to_learningFragment"
-            app:destination="@id/learningFragment" />
     </fragment>
     <fragment
         android:id="@+id/safetyListFragment"
