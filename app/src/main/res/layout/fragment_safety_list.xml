@@ -43,12 +43,11 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="80dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="100dp"
+            android:layout_marginRight="30dp"
             android:text="@string/achievements_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/safety_score_id"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <TextView
@@ -56,10 +55,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="50dp"
             android:textSize="19dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/calc_btn_id"
+            app:layout_constraintEnd_toStartOf="@+id/calc_btn_id"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
